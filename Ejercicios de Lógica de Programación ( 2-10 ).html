@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  
+<script>
+
+let cadena="Hola Mundo Mundo Mundo";
+
+
+// 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+function invertir(cadena){
+        if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } 
+        if(cadena==""){
+          return "Error cadena vacia";
+        }
+        else {
+          return cadena.split("").reverse().join("");
+        }
+}
+
+console.log(invertir(cadena));
+
+
+// 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+let palabraBuscar="Mundo";
+
+function buscar(cadena,palabraBuscar){
+  if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } 
+  if(cadena==""){
+    return "Error cadena vacia";
+  }
+  if(palabraBuscar==""){
+    return "Error con la palabra a buscar"
+  }
+  else{
+    return cadena.split(" ").lastIndexOf(palabraBuscar);
+  }
+}
+
+console.log(buscar(cadena,palabraBuscar));
+
+// 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+
+let palabraPalidroma="Salas"
+
+function palindromo(cadena){
+  if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } 
+  if(cadena==""){
+    return "Error cadena vacia";
+  }
+  else{
+    cadenaNueva=invertir(cadena);
+    return cadena.toUpperCase()==cadenaNueva.toUpperCase();
+  }
+}
+
+
+console.log(palindromo(palabraPalidroma));
+
+// 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+/*
+eliminarPatron=(arreglo,cadena)=>{
+
+
+}
+
+eliminarPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");*/
+
+
+</script>
+
+
+
+</body>
+</html>
