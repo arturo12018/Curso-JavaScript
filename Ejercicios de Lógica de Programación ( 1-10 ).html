@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hola mundo</h1>
+
+    <script>
+      function factorial(x) {
+        return x == 0 || x == 1 ? 1 : x * factorial(x - 1);
+      }
+      console.log(factorial(12));
+
+      function fibonachi(x) {
+        if (x == 1) {
+          return 0;
+        }
+        if (x == 2) {
+          return 1;
+        } else {
+          return fibonachi(x - 1) + fibonachi(x - 2);
+        }
+      }
+
+      console.log(3);
+
+      cadena = "Hola mundo";
+      function miFuncion(cadena) {
+        if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } else {
+          return cadena.length;
+        }
+      }
+
+      console.log(miFuncion(cadena));
+
+      numeroFinal = 4;
+      function numeroCadena(cadena, numeroFinal) {
+        if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } else {
+          return cadena.substring(0, numeroFinal);
+        }
+      }
+
+      console.log(numeroCadena(cadena, 4));
+
+      function separacion(cadena) {
+        if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } else {
+          return cadena.split(" ");
+        }
+      }
+
+      console.log(separacion(cadena));
+
+      function repetircadna(cadena, numeroDeveces) {
+        if (typeof cadena != "string") {
+          return `Error de la cadena: "${cadena}" es de tipo ${typeof cadena} debe ser de una cadena`;
+        } else {
+          return cadena.repeat(3);
+        }
+      }
+
+      console.log(repetircadna(cadena, 3));
+    </script>
+  </body>
+</html>
