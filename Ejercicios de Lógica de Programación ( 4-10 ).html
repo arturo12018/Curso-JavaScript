@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+      /*numeroPrimo=(numero)=>{
+        return 
+      }*/
+
+      // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+      numParImpar = (numero) => {
+        if (numero % 2 == 0) {
+          return `El ${numero} es par`;
+        } else {
+          return `El ${numero} es impar`;
+        }
+      };
+
+      console.log(numParImpar(2));
+      console.log(numParImpar(5));
+
+      // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+      grados = (temperatura, tipo) => {
+        if (!tipo) return console.warn("No ingresaste tipo");
+
+        if (tipo != "F" && tipo != "C")
+          return console.error("Error de tipo de grado");
+
+        if (typeof temperatura != "number")
+          return console.error("No ingresaste un numero en temperatura");
+        if (tipo == "F") {
+          return (temperatura - 32) * (5 / 9);
+        }
+        if (tipo == "C") {
+          return temperatura * (9 / 5) + 32;
+        }
+      };
+
+      console.log(grados(0, "F"));
+      console.log(grados(5, "C"));
+      //console.log(grados("S", "C"));
+    </script>
+  </body>
+</html>
