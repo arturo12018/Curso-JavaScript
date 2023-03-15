@@ -9,10 +9,18 @@
   <body>
     <script>
       // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
-      /*numeroPrimo=(numero)=>{
-        return 
-      }*/
+      numeroPrimo=(numero)=>{
+        let divisible=false;
+        for(let i=2;i<numero;i++){
+          if((numero%i)===0){
+            divisible=true;
+            break;
+          }
+        }
+        return divisible;
+      }
 
+      console.log(numeroPrimo(13));
       // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
       numParImpar = (numero) => {
         if (numero % 2 == 0) {
