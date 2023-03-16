@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      
+// 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+numeroConstantes=(cadena)=>{
+  let numerovocales=0;
+  let numeroConsonantes=0;
+  const vocales=/[aeiou]/;
+  const consonantes=/[bcdfghjklmnpqrstvwxyz]/;
+
+
+  cadena=cadena.toLowerCase().toString().split('');
+  console.log(cadena)
+
+  for(let x of cadena){
+    if(vocales.test(x)){
+      numerovocales+=1;
+    }
+    if(consonantes.test(x)){
+      numeroConsonantes+=1;
+    }
+  }
+  console.log(numerovocales);
+  console.log(numeroConsonantes);
+}
+
+numeroConstantes("Hola Mundo");
+
+
+// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+valir=(nombre)=>{
+  reg= /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(\s+[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)*$/;
+  return reg.test(nombre);
+}
+
+
+console.log(valir("Jonathan MirCha"));
+
+// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+email=(revisar)=>{
+  reg=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  
+  return reg.test(revisar);
+}
+
+console.log(email("jonmircha@gmail.com"));
+
+    </script>
+</body>
+</html>
