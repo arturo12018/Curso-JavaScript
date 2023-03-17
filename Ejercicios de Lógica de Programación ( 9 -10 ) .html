@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 27) Programa una clase llamada Pelicula.
+
+// La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, 
+//año de estreno, país o países de origen, géneros y calificación en IMBD.
+//   - Todos los datos del objeto son obligatorios.
+//   - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+//      7 restantes números.
+//   - Valida que el título no rebase los 100 caracteres.
+//   - Valida que el director no rebase los 50 caracteres.
+//   - Valida que el año de estreno sea un número entero de 4 dígitos.
+//   - Valida que el país o paises sea introducidos en forma de arreglo.
+//   - Valida que los géneros sean introducidos en forma de arreglo.
+//   - Valida que los géneros introducidos esten dentro de los géneros 
+//      aceptados*.
+//   - Crea un método estático que devuelva los géneros aceptados*.
+//   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+//     decimal de una posición.
+//   - Crea un método que devuelva toda la ficha técnica de la película.
+//   - Apartir de un arreglo con la información de 3 películas genera 3 
+//     instancias de la clase de forma automatizada e imprime la ficha técnica 
+//     de cada película.
+
+// * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, 
+//Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, 
+//Talk-Show, Thriller, War, Western.
+
+
+class Pelicula{
+
+    static generos=["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", 
+        "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", 
+        "Sci-Fi", "Short", "Sport",  "Talk-Show", "Thriller", "War", "Western"];
+
+    constructor({idImdb,titulo,director,anio,pais,genero,clasificacionIMDB}){
+        this.idImdb=idImdb;
+        this.titulo=titulo;
+        this.director=director;
+        this.anio=anio;
+        this.pais=pais;
+        this.genero=genero;
+        this.clasificacionIMDB=clasificacionIMDB;
+
+        this.validaridImdb(idImdb);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarAnio(anio);
+        this.validarPaises(pais);
+        this.validarGenero(genero);
+        this.validarCalificacion(clasificacionIMDB);
+    }
+
+    cadenaVacia(propiedad,valor){
+        if(!valor)   return console.warn(`Esta vacio ${propiedad}`);
+
+        if(typeof valor!="string") return console.error(`La propiedad de ${propiedad} no es string es un ${typeof valor}`);
+
+        else return true;
+    }
+
+    numeroVacia(propiedad,valor){
+        if(!valor)   return console.warn(`Esta vacio ${propiedad}`);
+
+        if(typeof valor!="number") return console.error(`La propiedad de ${propiedad} no es number es un ${typeof valor}`);
+
+        else return true;
+    }
+
+    validarLongitud(propiedad,valor,longitud){
+        if(valor.length>=longitud){
+            return console.error(`El ${propiedad} es mayor a ${longitud} caracteres`);
+        }
+        else return true;
+    }
+
+    validarArreglo(propiedad,valor){
+        if(!valor || valor.length==0){
+            return console.error(`El ${propiedad} esta vacia`);
+        }
+        else if(!Array.isArray(valor)){
+            return console.error(`La propiedad de ${propiedad} no es array es un ${typeof valor}`);
+        }
+        else return true
+    }
+
+
+    
+
+    validaridImdb(idImdb){
+        if(!this.cadenaVacia("ID IMDB",idImdb));
+
+        else if(idImdb.length!=9){
+            return console.error("El ID IMDB no es de 9 caracteres");
+        }
+        
+        else if(!(/^[A-Za-z]{2}\d{7}$/.test(idImdb))){
+            return console.error("El ID IMDB no esta bien escrito");
+            
+        }
+    }
+
+    validarTitulo(titulo){
+        if(this.cadenaVacia("Titulo",titulo));
+       
+        else if(!this.validarLongitud("Titulo",titulo,100));
+       
+    }
+
+    validarDirector(director){
+        if(this.cadenaVacia("Director",director));
+       
+       else if(!this.validarLongitud("Director",director,40));
+    }
+
+    validarAnio(anio){
+        if(!this.numeroVacia("Año",anio));
+
+        else if(anio.toString().length!=4){
+            return console.error(`El Año no es de 4 caracteres`);
+        }
+    }
+
+    validarPaises(pais){
+        if(!this.validarArreglo("Paises",pais));
+    }
+
+
+    static generoValidar(genero){
+        if(!Pelicula.generos.includes(genero)){
+                return console.error(`El ${genero} no existe`);
+            }
+    }
+
+    validarGenero(generos){
+        if(!this.validarArreglo("Genero",generos));
+        
+        else{
+            for(let genero of generos){
+                Pelicula.generoValidar(genero);
+            }
+        }        
+    }
+
+    validarCalificacion(calificacion){
+        if(!this.numeroVacia("Calificacion",calificacion));
+
+        else if(!(calificacion>=0 && calificacion<=10)) return console.error("La calificacion no esta entre 0 y 10");
+
+        this.calificacion=calificacion.toFixed(1);
+    }
+
+    fichaTecnica(){
+        console.log(`Id de la película en IMDB:${this.idImdb}
+        Titulo:${this.titulo}
+        Director:${this.director}
+        Año de estreno:${this.anio}
+        País o países de origen:${this.pais}
+        Géneros:${this.genero}
+        Calificación en IMBD:${this.clasificacionIMDB}`)
+    }
+
+
+}
+
+pelicula1=new Pelicula({
+        idImdb:"aa1111111",
+        titulo:"Pruebba",
+        director:"Prueba",
+        anio:2003,
+        pais:["Mexico"],
+        genero:["Adult", "Adventure", "Animation"],
+        clasificacionIMDB:9.233
+    });
+console.log(pelicula1);
+pelicula1.fichaTecnica();
+
+peliculasLista=[
+    {
+        idImdb:"aa1111111",
+        titulo:"Pruebba",
+        director:"Prueba",
+        anio:2003,
+        pais:["Mexico"],
+        genero:["Adult", "Adventure", "Animation"],
+        clasificacionIMDB:9.233
+    },
+    {
+        idImdb:"aa1111112",
+        titulo:"Pruebba",
+        director:"Prueba",
+        anio:2003,
+        pais:["Mexico"],
+        genero:["Adult", "Adventure", "Animation"],
+        clasificacionIMDB:9.233
+    },
+    {
+        idImdb:"aa1111113",
+        titulo:"Pruebba",
+        director:"Prueba",
+        anio:2003,
+        pais:["Mexico"],
+        genero:["Adult", "Adventure", "Animation"],
+        clasificacionIMDB:9.233
+    }
+];
+
+peliculasLista.forEach(element => new Pelicula(element).fichaTecnica());
+
+
+    </script>
+</body>
+</html>
